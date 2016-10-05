@@ -38,6 +38,7 @@ rebuild:1.25
 run-condition:1.0
 scm-api:1.2
 script-security:1.21
+sonar:2.4.4
 ssh-credentials:1.12
 structs:1.2
 token-macro:1.12.1
