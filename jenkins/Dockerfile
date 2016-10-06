@@ -4,6 +4,7 @@ USER root
 RUN apt-get update \
       && apt-get install -y sudo curl\
       && rm -rf /var/lib/apt/lists/*
+RUN apt-get install ruby
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 # getting the docker-cli
