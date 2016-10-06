@@ -3,7 +3,6 @@ FROM jenkins:2.7.1
 USER root
 RUN apt-get update \
       && apt-get install -y sudo curl\
-      && apt-get install ruby-full\
       && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
