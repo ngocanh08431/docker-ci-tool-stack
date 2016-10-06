@@ -20,6 +20,19 @@ USER jenkins
 COPY plugins.txt /var/jenkins_home/plugins.txt
 RUN /usr/local/bin/plugins.sh /var/jenkins_home/plugins.txt
 
+# Install ruby for Jenkins
+
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3\
+	&& curl -sSL https://get.rvm.io | bash -s stable \
+	&& source ~/.rvm/scripts/rvm \
+	&& rvm install 2.3.1 \
+	&& rvm use 2.3.1 --default \
+	&& gem install bundler \
+	&& sudo apt-get install libmysqlclient-dev \
+	&& curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - \
+	&& sudo apt-get install -y nodejs \
+	&& gem install rubycritic
+
 # Adding default Jenkins Jobs
 # COPY jobs/1-github-seed-job.xml /usr/share/jenkins/ref/jobs/1-github-seed-job/config.xml
 # COPY jobs/2-job-dsl-seed-job.xml /usr/share/jenkins/ref/jobs/2-job-dsl-seed-job/config.xml
